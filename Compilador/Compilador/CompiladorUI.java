@@ -93,7 +93,7 @@ public class CompiladorUI extends JFrame {
         };
         Action compilar = new AbstractAction("compilar [F7]", carregarIcone("/icons/compilation.png")) {
             @Override
-            public void actionPerformed(ActionEvent e) { mostrarMensagemUnica("compilação de programas ainda não foi implementada"); }
+            public void actionPerformed(ActionEvent e) { acaoCompilar(); }
         };
         Action equipe = new AbstractAction("equipe [F1]", carregarIcone("/icons/team.png")) {
             @Override
@@ -170,7 +170,7 @@ private Icon carregarIcone(String caminho) {
         am.put("salvar", new AbstractAction() { public void actionPerformed(ActionEvent e) { acaoSalvar(false); }});
 
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0), "compilar");
-        am.put("compilar", new AbstractAction() { public void actionPerformed(ActionEvent e) { mostrarMensagemUnica("compilação de programas ainda não foi implementada"); }});
+        am.put("compilar", new AbstractAction() { public void actionPerformed(ActionEvent e) { acaoCompilar(); }});
 
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "equipe");
         am.put("equipe", new AbstractAction() { public void actionPerformed(ActionEvent e) { mostrarMensagemUnica("Equipe: Gustavo Luchini, Emanuel Sergio Girardi, Gabriel Tormena"); }});
@@ -286,6 +286,62 @@ private Icon carregarIcone(String caminho) {
 
     private void mostrarMensagemUnica(String msg) {
         mensagens.setText(msg);
+    }
+
+    private void acaoCompilar() {
+        String source = editor.getText();
+        Lexico lexico = new Lexico();
+        lexico.setInput(new java.io.StringReader(source));
+
+        java.util.List<Token> tokens = new java.util.ArrayList<>();
+
+        try {
+            Token t;
+            while ((t = lexico.nextToken()) != null) {
+                tokens.add(t);
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append(String.format("%-8s%-24s%s%n", "linha", "classe", "lexema"));
+            for (Token tok : tokens) {
+                int linha = calcularLinha(source, tok.getPosition());
+                String classe = classeDoToken(tok.getId());
+                sb.append(String.format("%-8d%-24s%s%n", linha, classe, tok.getLexeme()));
+            }
+            sb.append("\nprograma compilado com sucesso");
+            mensagens.setText(sb.toString());
+        } catch (LexicalError e) {
+            int linha = calcularLinha(source, e.getPosition());
+            String msg = e.getMessage();
+            if (msg.equals("símbolo inválido")) {
+                char c = (e.getPosition() >= 0 && e.getPosition() < source.length())
+                         ? source.charAt(e.getPosition()) : '?';
+                mensagens.setText("linha " + linha + ": " + c + " símbolo inválido");
+            } else {
+                mensagens.setText("linha " + linha + ": " + msg);
+            }
+        }
+    }
+
+    private int calcularLinha(String text, int position) {
+        int linha = 1;
+        int limit = Math.min(position, text.length());
+        for (int i = 0; i < limit; i++) {
+            if (text.charAt(i) == '\n') linha++;
+        }
+        return linha;
+    }
+
+    private String classeDoToken(int id) {
+        switch (id) {
+            case Constants.t_identificador: return "identificador";
+            case Constants.t_cte_int:       return "constante_int";
+            case Constants.t_cte_float:     return "constante_float";
+            case Constants.t_cte_char:      return "constante_char";
+            case Constants.t_cte_string:    return "constante_string";
+            default:
+                if (id >= Constants.t_pr_ask && id <= Constants.t_pr_while) return "palavra reservada";
+                return "símbolo especial";
+        }
     }
 
     public static void main(String[] args) {
