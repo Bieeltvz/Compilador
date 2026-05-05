@@ -291,24 +291,13 @@ private Icon carregarIcone(String caminho) {
     private void acaoCompilar() {
         String source = editor.getText();
         Lexico lexico = new Lexico();
-        lexico.setInput(new java.io.StringReader(source));
-
-        java.util.List<Token> tokens = new java.util.ArrayList<>();
+        Sintatico sintatico = new Sintatico();
+        Semantico semantico = new Semantico();
+        lexico.setInput(source);
 
         try {
-            Token t;
-            while ((t = lexico.nextToken()) != null) {
-                tokens.add(t);
-            }
-            StringBuilder sb = new StringBuilder();
-            sb.append(String.format("%-8s%-24s%s%n", "linha", "classe", "lexema"));
-            for (Token tok : tokens) {
-                int linha = calcularLinha(source, tok.getPosition());
-                String classe = classeDoToken(tok.getId());
-                sb.append(String.format("%-8d%-24s%s%n", linha, classe, tok.getLexeme()));
-            }
-            sb.append("\nprograma compilado com sucesso");
-            mensagens.setText(sb.toString());
+            sintatico.parse(lexico, semantico);
+            mensagens.setText("programa compilado com sucesso");
         } catch (LexicalError e) {
             int linha = calcularLinha(source, e.getPosition());
             String msg = e.getMessage();
@@ -319,6 +308,12 @@ private Icon carregarIcone(String caminho) {
             } else {
                 mensagens.setText("linha " + linha + ": " + msg);
             }
+        } catch (SyntaticError e) {
+            int linha = calcularLinha(source, e.getPosition());
+            mensagens.setText("linha " + linha + ": " + e.getMessage());
+        } catch (SemanticError e) {
+            int linha = calcularLinha(source, e.getPosition());
+            mensagens.setText("linha " + linha + ": " + e.getMessage());
         }
     }
 
@@ -329,19 +324,6 @@ private Icon carregarIcone(String caminho) {
             if (text.charAt(i) == '\n') linha++;
         }
         return linha;
-    }
-
-    private String classeDoToken(int id) {
-        switch (id) {
-            case Constants.t_identificador: return "identificador";
-            case Constants.t_cte_int:       return "constante_int";
-            case Constants.t_cte_float:     return "constante_float";
-            case Constants.t_cte_char:      return "constante_char";
-            case Constants.t_cte_string:    return "constante_string";
-            default:
-                if (id >= Constants.t_pr_ask && id <= Constants.t_pr_while) return "palavra reservada";
-                return "símbolo especial";
-        }
     }
 
     public static void main(String[] args) {

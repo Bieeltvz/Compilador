@@ -1005,47 +1005,47 @@ public interface ScannerConstants
 
     String[] SCANNER_ERROR =
     {
-        "símbolo inválido",                       // 0  - caractere desconhecido
-        "",                                        // 1
-        "",                                        // 2
-        "constante_string inválida",              // 3
-        "",                                        // 4
-        "símbolo inválido",                       // 5  - & sozinho
-        "",                                        // 6  - ( é token válido
-        "",                                        // 7  - ) é token válido
-        "",                                        // 8
-        "",                                        // 9
-        "",                                        // 10
-        "",                                        // 11
-        "",                                        // 12
-        "",                                        // 13
-        "",                                        // 14
-        "",                                        // 15
-        "",                                        // 16
-        "",                                        // 17
-        "",                                        // 18
-        "constante_char inválida",                // 19
-        "",                                        // 20
-        "",                                        // 21
-        "comentário inválido ou não finalizado",  // 22
-        "símbolo inválido",                       // 23 - | sozinho
-        "",                                        // 24
-        "",                                        // 25
-        "constante_string inválida",              // 26
-        "",                                        // 27
-        "constante_float inválida",               // 28
-        "",                                        // 29
-        "",                                        // 30
-        "",                                        // 31
-        "",                                        // 32
-        "",                                        // 33
-        "identificador inválido",                 // 34
-        "comentário inválido ou não finalizado",  // 35
-        "",                                        // 36
-        "",                                        // 37
-        "",                                        // 38
-        "comentário inválido ou não finalizado",  // 39
-        ""                                         // 40
+        "símbolo inválido",                        // Caractere não esperado
+        "",
+        "",
+        "constante_string inválida",               // Erro identificando cte_string
+        "",
+        "símbolo inválido",                        // Erro identificando "&&"
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "constante_char inválida",                 // Erro identificando cte_char
+        "",
+        "",
+        "comentário inválido ou não finalizado",   // Erro identificando <ignorar>
+        "símbolo inválido",                        // Erro identificando "||"
+        "",
+        "",
+        "constante_string inválida",               // Erro identificando cte_string
+        "",
+        "constante_float inválida",                // Erro identificando cte_float
+        "",
+        "",
+        "",
+        "",
+        "",
+        "identificador inválido",                  // Erro identificando identificador
+        "comentário inválido ou não finalizado",   // Erro identificando <ignorar>
+        "",
+        "",
+        "",
+        "comentário inválido ou não finalizado",   // Erro identificando <ignorar>
+        ""
     };
 
 }
