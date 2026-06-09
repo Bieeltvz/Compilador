@@ -289,32 +289,45 @@ private Icon carregarIcone(String caminho) {
     }
 
     private void acaoCompilar() {
+        if (arquivoAtual == null) {
+            mensagens.setText("salve o arquivo antes de compilar");
+            return;
+        }
         String source = editor.getText();
         Lexico lexico = new Lexico();
         Sintatico sintatico = new Sintatico();
         Semantico semantico = new Semantico();
-        lexico.setInput(source);
+        lexico.setInput(new StringReader(source));
 
         try {
             sintatico.parse(lexico, semantico);
-            mensagens.setText("programa compilado com sucesso");
+            try {
+                gerarArquivoIL(semantico.getCodigoObjeto());
+                mensagens.setText("programa compilado com sucesso");
+            } catch (IOException ex) {
+                mensagens.setText("erro ao gerar o arquivo .il: " + ex.getMessage());
+            }
         } catch (LexicalError e) {
             int linha = calcularLinha(source, e.getPosition());
-            String msg = e.getMessage();
-            if (msg.equals("símbolo inválido")) {
-                char c = (e.getPosition() >= 0 && e.getPosition() < source.length())
-                         ? source.charAt(e.getPosition()) : '?';
-                mensagens.setText("linha " + linha + ": " + c + " símbolo inválido");
-            } else {
-                mensagens.setText("linha " + linha + ": " + msg);
-            }
+            mensagens.setText("linha " + linha + ": erro léxico");
         } catch (SyntaticError e) {
             int linha = calcularLinha(source, e.getPosition());
-            mensagens.setText("linha " + linha + ": " + e.getMessage());
+            mensagens.setText("linha " + linha + ": erro sintático");
         } catch (SemanticError e) {
             int linha = calcularLinha(source, e.getPosition());
             mensagens.setText("linha " + linha + ": " + e.getMessage());
         }
+    }
+
+    //gera o arquivo .il na mesma pasta e com o mesmo nome do programa fonte compilado
+    private void gerarArquivoIL(String codigoObjeto) throws IOException {
+        String nome = arquivoAtual.getName();
+        int ponto = nome.lastIndexOf('.');
+        if (ponto > 0) {
+            nome = nome.substring(0, ponto);
+        }
+        File arquivoIL = new File(arquivoAtual.getParentFile(), nome + ".il");
+        escreverArquivo(arquivoIL, codigoObjeto);
     }
 
     private int calcularLinha(String text, int position) {
