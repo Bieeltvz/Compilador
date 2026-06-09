@@ -49,173 +49,173 @@ public interface ParserConstants
 
     int[][] PRODUCTIONS = 
     {
-        { 18, 49, 47, 11 },
-        { 50, 29, 48 },
-        {  0 },
-        { 47 },
-        { 51 },
-        {  0 },
-        { 69 },
-        { 59 },
-        { 66 },
-        { 57 },
-        { 63 },
-        { 10, 55 },
-        {  8 },
-        {  9 },
-        { 17 },
-        { 15 },
-        { 20 },
-        {  2, 54 },
-        {  0 },
-        { 30, 53 },
-        { 52, 28, 53, 29, 56 },
-        {  0 },
-        { 55 },
-        { 53, 58 },
-        { 31, 71 },
-        { 32, 71 },
-        {  7, 33, 60, 34 },
-        { 62,  2, 61 },
-        {  0 },
-        { 30, 60 },
-        {  6, 30 },
-        {  0 },
-        { 21, 33, 64, 34 },
-        { 71, 65 },
-        {  0 },
-        { 30, 64 },
-        { 16, 71, 47, 67, 68, 11 },
-        { 12, 71, 47, 67 },
-        {  0 },
-        { 13, 47 },
-        {  0 },
-        { 19, 47, 70 },
-        { 24, 71 },
-        { 23, 71 },
-        { 72, 73 },
-        {  0 },
-        { 25, 72, 73 },
-        { 26, 72, 73 },
-        { 74 },
-        { 22 },
-        { 14 },
-        { 27, 72 },
-        { 76, 75 },
-        {  0 },
-        { 78, 76 },
-        { 35 },
-        { 36 },
-        { 37 },
-        { 38 },
-        { 39 },
-        { 40 },
-        { 79, 77 },
-        {  0 },
-        { 41, 79, 77 },
-        { 42, 79, 77 },
-        { 81, 80 },
-        {  0 },
-        { 43, 81, 80 },
-        { 44, 81, 80 },
-        { 83, 82 },
-        {  0 },
-        { 45, 83, 82 },
-        {  2 },
-        {  3 },
-        {  4 },
-        {  5 },
-        {  6 },
-        { 33, 71, 34 },
-        { 41, 83 },
-        { 42, 83 }
+        {  18, 104,  49,  47,  11, 105 },
+        {  50,  29,  48 },
+        {   0 },
+        {  47 },
+        {  51 },
+        {   0 },
+        {  69 },
+        {  59 },
+        {  66 },
+        {  57 },
+        {  63 },
+        {  10,  55 },
+        {   8 },
+        {   9 },
+        {  17 },
+        {  15 },
+        {  20 },
+        {   2, 108,  54 },
+        {   0 },
+        {  30,  53 },
+        {  52, 106,  28,  53, 107,  29,  56 },
+        {   0 },
+        {  55 },
+        {  53,  58 },
+        {  31,  71, 109 },
+        {  32,  71, 109 },
+        {   7,  33,  60,  34 },
+        {  62,   2, 110,  61 },
+        {   0 },
+        {  30,  60 },
+        {   6, 103,  98,  30 },
+        {   0 },
+        {  21,  33,  64,  34 },
+        {  71,  98,  65 },
+        {   0 },
+        {  30,  64 },
+        {  16,  71, 111,  47,  67, 112,  68,  11, 113 },
+        { 112,  12,  71, 114,  47,  67 },
+        {   0 },
+        {  13,  47 },
+        {   0 },
+        {  19, 116,  47,  70 },
+        {  24,  71, 117 },
+        {  23,  71, 118 },
+        {  72,  73 },
+        {   0 },
+        {  25,  72,  99,  73 },
+        {  26,  72, 100,  73 },
+        {  74 },
+        {  22,  95 },
+        {  14,  96 },
+        {  27,  72,  97 },
+        {  76,  75 },
+        {   0 },
+        {  78,  93,  76,  94 },
+        {  35 },
+        {  36 },
+        {  37 },
+        {  38 },
+        {  39 },
+        {  40 },
+        {  79,  77 },
+        {   0 },
+        {  41,  79,  85,  77 },
+        {  42,  79,  86,  77 },
+        {  81,  80 },
+        {   0 },
+        {  43,  81,  87,  80 },
+        {  44,  81,  88,  80 },
+        {  83,  82 },
+        {   0 },
+        {  45,  83, 101,  82 },
+        {   2, 115 },
+        {   3,  89 },
+        {   4,  90 },
+        {   5, 102 },
+        {   6, 103 },
+        {  33,  71,  34 },
+        {  41,  83,  91 },
+        {  42,  83,  92 }
     };
 
     String[] PARSER_ERROR =
     {
         "",
-        "EOF",                                                                           // Era esperado fim de programa
-        "identificador",                                                                 // Era esperado identificador
-        "constante_int",                                                                 // Era esperado cte_int
-        "constante_float",                                                               // Era esperado cte_float
-        "constante_char",                                                                // Era esperado cte_char
-        "constante_string",                                                              // Era esperado cte_string
-        "ask",                                                                           // Era esperado pr_ask
-        "bool",                                                                          // Era esperado pr_bool
-        "char",                                                                          // Era esperado pr_char
-        "define",                                                                        // Era esperado pr_define
-        "end",                                                                           // Era esperado pr_end
-        "elif",                                                                          // Era esperado pr_elif
-        "else",                                                                          // Era esperado pr_else
-        "false",                                                                         // Era esperado pr_false
-        "float",                                                                         // Era esperado pr_float
-        "if",                                                                            // Era esperado pr_if
-        "int",                                                                           // Era esperado pr_int
-        "main",                                                                          // Era esperado pr_main
-        "repeat",                                                                        // Era esperado pr_repeat
-        "string",                                                                        // Era esperado pr_string
-        "tell",                                                                          // Era esperado pr_tell
-        "true",                                                                          // Era esperado pr_true
-        "until",                                                                         // Era esperado pr_until
-        "while",                                                                         // Era esperado pr_while
-        "&&",                                                                            // Era esperado "&&"
-        "||",                                                                            // Era esperado "||"
-        "!",                                                                             // Era esperado "!"
-        ":",                                                                             // Era esperado ":"
-        ";",                                                                             // Era esperado ";"
-        ",",                                                                             // Era esperado ","
-        "=",                                                                             // Era esperado "="
-        "<-",                                                                            // Era esperado "<-"
-        "(",                                                                             // Era esperado "("
-        ")",                                                                             // Era esperado ")"
-        "==",                                                                            // Era esperado "=="
-        "!=",                                                                            // Era esperado "!="
-        "<",                                                                             // Era esperado "<"
-        "<=",                                                                            // Era esperado "<="
-        ">",                                                                             // Era esperado ">"
-        ">=",                                                                            // Era esperado ">="
-        "+",                                                                             // Era esperado "+"
-        "-",                                                                             // Era esperado "-"
-        "*",                                                                             // Era esperado "*"
-        "/",                                                                             // Era esperado "/"
-        "^",                                                                             // Era esperado "^"
-        "main",                                                                          // <forma_geral_do_programa> inválido
-        "identificador ask if repeat tell",                                              // <lista_instrucoes> inválido
-        "identificador ask end elif else if repeat tell until while",                    // <lista_instrucoes1> inválido
-        "identificador ask define if repeat tell",                                       // <declaracao_var_opc> inválido
-        "identificador ask if repeat tell",                                              // <instrucao> inválido
-        "define",                                                                        // <declaracao_var> inválido
-        "bool char float int string",                                                    // <tipo> inválido
-        "identificador",                                                                 // <lista_id> inválido
-        "; , = <-",                                                                      // <lista_id1> inválido
-        "bool char float int string",                                                    // <declaracao_var_loop> inválido
-        "identificador ask bool char float if int repeat string tell",                   // <declaracao_var_loop1> inválido
-        "identificador",                                                                 // <comando_atribuicao> inválido
-        "= <-",                                                                          // <comando_atribuicao1> inválido
-        "ask",                                                                           // <entrada_dados> inválido
-        "identificador constante_string",                                                // <lista_entrada> inválido
-        ", )",                                                                           // <lista_entrada1> inválido
-        "identificador constante_string",                                                // <cte_string_opc> inválido
-        "tell",                                                                          // <saida_dados> inválido
-        "expressao",                                                                     // <lista_expressao> inválido
-        ", )",                                                                           // <lista_expressao1> inválido
-        "if",                                                                            // <comando_selecao> inválido
-        "end elif else",                                                                 // <lista_instrucoes_elif> inválido
-        "end else",                                                                      // <lista_instrucoes_else> inválido
-        "repeat",                                                                        // <comando_repeticao> inválido
-        "until while",                                                                   // <comando_repeticao1> inválido
-        "expressao",                                                                     // <expressao> inválido
-        "expressao",                                                                     // <termo_logico> inválido
-        "expressao",                                                                     // <expressao_> inválido
-        "expressao",                                                                     // <relacional> inválido
-        "expressao",                                                                     // <relacional_> inválido
-        "expressao",                                                                     // <aritmetica> inválido
-        "expressao",                                                                     // <aritmetica_> inválido
-        "== != < <= > >=",                                                               // <operador_relacional> inválido
-        "expressao",                                                                     // <termo_aritmetico> inválido
-        "expressao",                                                                     // <termo_aritmetico_> inválido
-        "expressao",                                                                     // <fator> inválido
-        "expressao",                                                                     // <fator_> inválido
-        "expressao"                                                                      // <elemento> inválido
+        "Era esperado fim de programa",
+        "Era esperado identificador",
+        "Era esperado cte_int",
+        "Era esperado cte_float",
+        "Era esperado cte_char",
+        "Era esperado cte_string",
+        "Era esperado pr_ask",
+        "Era esperado pr_bool",
+        "Era esperado pr_char",
+        "Era esperado pr_define",
+        "Era esperado pr_end",
+        "Era esperado pr_elif",
+        "Era esperado pr_else",
+        "Era esperado pr_false",
+        "Era esperado pr_float",
+        "Era esperado pr_if",
+        "Era esperado pr_int",
+        "Era esperado pr_main",
+        "Era esperado pr_repeat",
+        "Era esperado pr_string",
+        "Era esperado pr_tell",
+        "Era esperado pr_true",
+        "Era esperado pr_until",
+        "Era esperado pr_while",
+        "Era esperado \"&&\"",
+        "Era esperado \"||\"",
+        "Era esperado \"!\"",
+        "Era esperado \":\"",
+        "Era esperado \";\"",
+        "Era esperado \",\"",
+        "Era esperado \"=\"",
+        "Era esperado \"<-\"",
+        "Era esperado \"(\"",
+        "Era esperado \")\"",
+        "Era esperado \"==\"",
+        "Era esperado \"!=\"",
+        "Era esperado \"<\"",
+        "Era esperado \"<=\"",
+        "Era esperado \">\"",
+        "Era esperado \">=\"",
+        "Era esperado \"+\"",
+        "Era esperado \"-\"",
+        "Era esperado \"*\"",
+        "Era esperado \"/\"",
+        "Era esperado \"^\"",
+        "<forma_geral_do_programa> inválido",
+        "<lista_instrucoes> inválido",
+        "<lista_instrucoes1> inválido",
+        "<declaracao_var_opc> inválido",
+        "<instrucao> inválido",
+        "<declaracao_var> inválido",
+        "<tipo> inválido",
+        "<lista_id> inválido",
+        "<lista_id1> inválido",
+        "<declaracao_var_loop> inválido",
+        "<declaracao_var_loop1> inválido",
+        "<comando_atribuicao> inválido",
+        "<comando_atribuicao1> inválido",
+        "<entrada_dados> inválido",
+        "<lista_entrada> inválido",
+        "<lista_entrada1> inválido",
+        "<cte_string_opc> inválido",
+        "<saida_dados> inválido",
+        "<lista_expressao> inválido",
+        "<lista_expressao1> inválido",
+        "<comando_selecao> inválido",
+        "<lista_instrucoes_elif> inválido",
+        "<lista_instrucoes_else> inválido",
+        "<comando_repeticao> inválido",
+        "<comando_repeticao1> inválido",
+        "<expressao> inválido",
+        "<termo_logico> inválido",
+        "<expressao_> inválido",
+        "<relacional> inválido",
+        "<relacional_> inválido",
+        "<aritmetica> inválido",
+        "<aritmetica_> inválido",
+        "<operador_relacional> inválido",
+        "<termo_aritmetico> inválido",
+        "<termo_aritmetico_> inválido",
+        "<fator> inválido",
+        "<fator_> inválido",
+        "<elemento> inválido"
     };
 }

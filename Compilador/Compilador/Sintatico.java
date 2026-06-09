@@ -56,7 +56,7 @@ public class Sintatico implements Constants
             }
             else
             {
-                throw new SyntaticError(buildErrorMessage(currentToken, PARSER_ERROR[x]), currentToken.getPosition());
+                throw new SyntaticError(PARSER_ERROR[x], currentToken.getPosition());
             }
         }
         else if (isNonTerminal(x))
@@ -64,41 +64,13 @@ public class Sintatico implements Constants
             if (pushProduction(x, a))
                 return false;
             else
-                throw new SyntaticError(buildErrorMessage(currentToken, PARSER_ERROR[x]), currentToken.getPosition());
+                throw new SyntaticError(PARSER_ERROR[x], currentToken.getPosition());
         }
         else // isSemanticAction(x)
         {
             semanticAnalyser.executeAction(x-FIRST_SEMANTIC_ACTION, previousToken);
             return false;
         }
-    }
-
-    private String buildErrorMessage(Token token, String expected)
-    {
-        String found;
-        if (token.getId() == DOLLAR)
-            found = "EOF";
-        else if (token.getId() == t_cte_string)
-            found = "constante_string";
-        else
-            found = escapeLexeme(token.getLexeme());
-
-        return "encontrado " + found + " esperado " + expected;
-    }
-
-    private String escapeLexeme(String s)
-    {
-        if (s == null) return "";
-        StringBuilder sb = new StringBuilder(s.length());
-        for (int i = 0; i < s.length(); i++)
-        {
-            char c = s.charAt(i);
-            if (c == '\n')      sb.append("\\n");
-            else if (c == '\r') sb.append("\\r");
-            else if (c == '\t') sb.append("\\t");
-            else                sb.append(c);
-        }
-        return sb.toString();
     }
 
     private boolean pushProduction(int topStack, int tokenInput)
