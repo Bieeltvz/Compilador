@@ -19,7 +19,7 @@ public class Semantico implements Constants {
    public void executeAction(int action, Token token) throws SemanticError {
       switch (action) {
          case  1: acao1(); break;
-         case  2: acao2(); break;
+         case  2: acao2(token); break;
          case  3: acao3(); break;
          case  4: acao4(); break;
          case  5: acao5(token); break;
@@ -76,9 +76,15 @@ public class Semantico implements Constants {
    }
 
    //operador aritmetico binario -
-   private void acao2() {
+   //compatibilidade de tipos: ambos os operandos devem ser numericos (int64 ou float64)
+   private void acao2(Token token) throws SemanticError {
       String tipo1 = pilhaTipos.pop();
       String tipo2 = pilhaTipos.pop();
+      boolean numerico1 = "int64".equals(tipo1) || "float64".equals(tipo1);
+      boolean numerico2 = "int64".equals(tipo2) || "float64".equals(tipo2);
+      if (!numerico1 || !numerico2) {
+         throw new SemanticError("tipos incompatíveis em operador aritmético -", token.getPosition());
+      }
       if ("int64".equals(tipo1) && "int64".equals(tipo2)) {
          pilhaTipos.push("int64");
       } else {
